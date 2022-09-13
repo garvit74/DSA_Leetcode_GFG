@@ -3,6 +3,7 @@ public:
     void sortColors(vector<int>& nums) {
         int n = nums.size();
         int cnt0 = 0, cnt1 = 0, cnt2 = 0;
+        // counter approach
         for(int i = 0;i < n; i++){
             if(nums[i] == 0){
                 ++cnt0;
