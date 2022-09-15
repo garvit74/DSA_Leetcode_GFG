@@ -6,7 +6,7 @@ public:
         if(n%2 == 1){
             return {}; 
         }
-        map<int, int> mp;
+        unordered_map<int, int> mp;
         sort(c.begin(), c.end());
         for(int i = 0;i < n; i++){
             mp[c[i]]++;
