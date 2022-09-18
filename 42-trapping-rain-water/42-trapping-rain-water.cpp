@@ -9,9 +9,7 @@ public:
         int ans = 0;
         for(int i = 1;i < n;i++){
             l[i] = max(l[i-1], h[i]);
-        }
-        for(int j = n-2; j >= 0; j--){
-            r[j] = max(h[j], r[j+1]);
+            r[n-i-1] = max(h[n-i-1], r[n-i]);
         }
         for(int i = 0; i < n; i++){
             ans += (min(l[i],r[i]) - h[i]); 
