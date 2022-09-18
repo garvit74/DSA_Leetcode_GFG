@@ -3,8 +3,7 @@ public:
     int trap(vector<int>& h) {
         int n = h.size();
         if(n == 0) return 0;
-        int l[n];
-        int r[n];
+        vector<int>l(n), r(n);
         l[0] = h[0];
         r[n-1] = h[n-1];
         int ans = 0;
