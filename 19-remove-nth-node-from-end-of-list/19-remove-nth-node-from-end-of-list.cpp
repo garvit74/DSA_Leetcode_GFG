@@ -10,23 +10,32 @@
  */
 class Solution {
 public:
-    ListNode* removeNthFromEnd(ListNode* head, int n) {
-        ListNode* curr, *prevcurr, *forw;
-        curr=head, prevcurr=head, forw=head;
-        while(n and forw!=nullptr){
-            forw=forw->next;
-            n--;
+    ListNode* recursivecall(ListNode* head, int n, int& count, int& len) {
+        len++;
+        if(head==NULL || head->next==NULL) {
+            return head;
         }
-        if(forw==nullptr){
+        recursivecall(head->next, n, count, len);
+        count++;
+        // when 1st element from last needs to be deleted
+        if(count==1 && n==1) {
+            head->next=NULL;
+        }
+        if(count==n && n!=1) {
+            head->next=head->next->next;
+            
+        }
+        // when 1st element needs to be deleted
+        if(count==len-1 && n==len) {
             return head->next;
         }
-        while(forw!=nullptr){
-            prevcurr=curr;
-            curr=curr->next;
-            forw=forw->next;    
-        }
-
-        prevcurr->next=curr->next;
         return head;
+    }
+    ListNode* removeNthFromEnd(ListNode* head, int n) {
+        int count=0, len=0;
+        if(head->next==NULL && n==1) {
+            return NULL;
+        }
+        return recursivecall(head, n, count, len);
     }
 };
