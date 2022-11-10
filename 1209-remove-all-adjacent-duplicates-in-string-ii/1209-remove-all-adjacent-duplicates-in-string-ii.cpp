@@ -26,7 +26,7 @@ public:
         
         string ans ="";
         while(!st.empty()){
-            ans.push_back(st.top().first);
+            ans += st.top().first;
             st.pop();
         }
         reverse(ans.begin(), ans.end());
